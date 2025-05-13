@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js for weather graphs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="weather-app">
+        <header>
+          <div class="search-box">
+            <i class='bx bxs-map'></i>
+            <input id="location-input" type="text" placeholder="Enter your location">
+            <button id="search-btn" class="bx bx-search"></button>
+          </div>
+          <div class="units-toggle">
+            <button id="celsius" class="active">°C</button>
+            <button id="fahrenheit">°F</button>
+          </div>
+        </header>
+
+        <!-- Main weather information -->
+        <div class="weather-info">
+          <div class="current-weather">
+            <div class="weather-icon">
+              <img id="weather-icon" src="images/clouds-and-sun.png" alt="Weather icon">
+            </div>
+            <div class="weather-data">
+              <h1 id="location">Weather Dashboard</h1>
+              <p id="date-time">Monday, 10:30 AM</p>
+              <div class="temperature-container">
+                <h2 id="temperature">-- <span>°C</span></h2>
+                <p id="feels-like">Feels like: -- °C</p>
+              </div>
+              <p id="weather-description">--</p>
+            </div>
+          </div>
+
+          <!-- Weather details cards -->
+          <div class="weather-details">
+            <div class="detail-card">
+              <i class="bx bx-water"></i>
+              <div class="detail-info">
+                <span id="humidity-value">--%</span>
+                <p>Humidity</p>
+              </div>
+            </div>
+            <div class="detail-card">
+              <i class="bx bx-wind"></i>
+              <div class="detail-info">
+                <span id="wind-value">-- km/h</span>
+                <p>Wind Speed</p>
+              </div>
+            </div>
+            <div class="detail-card">
+              <i class="bx bx-cloud"></i>
+              <div class="detail-info">
+                <span id="cloudiness-value">--%</span>
+                <p>Cloudiness</p>
+              </div>
+            </div>
+            <div class="detail-card">
+              <i class="bx bx-droplet"></i>
+              <div class="detail-info">
+                <span id="pressure-value">-- hPa</span>
+                <p>Pressure</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weather forecast section -->
+          <div class="forecast-section">
+            <h3>5-Day Forecast</h3>
+            <div id="forecast-container" class="forecast-cards">
+              <!-- Forecast cards will be dynamically added here -->
+            </div>
+          </div>
+
+          <!-- Weather graphs section -->
+          <div class="graphs-section">
+            <div class="graph-tabs">
+              <button class="tab-btn active" data-tab="temperature">Temperature</button>
+              <button class="tab-btn" data-tab="humidity">Humidity</button>
+              <button class="tab-btn" data-tab="wind">Wind</button>
+            </div>
+            <div class="graph-container">
+              <canvas id="weather-chart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Error message for location not found -->
+        <div class="not-found">
+          <img src="images/error-404.png" alt="Location not found">
+          <h3>Oops! Location not found</h3>
+          <p>Please check the spelling or try a different location.</p>
+          <button id="back-btn">Go Back</button>
+        </div>
+
+        <!-- Loading animation -->
+        <div class="loading">
+          <div class="spinner"></div>
+          <p>Fetching weather data...</p>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
